@@ -7,7 +7,7 @@ import { ReactComponent as WhatsappIcon } from "../assets/whatsapp.svg";
 export const MessageNode = ({ data, selected }) => {
   return (
     <>
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target" position={Position.Left} id="target" />
       <div
         className={`selected selectable flex h-12 w-44 flex-col rounded-md text-[8px] leading-none shadow-md  ${
           selected ? " ring-1 ring-slate-500" : ""
@@ -27,9 +27,15 @@ export const MessageNode = ({ data, selected }) => {
             </div>
           </div>
         </div>
-        <div className="grow rounded-b-md bg-white p-[6px] ">{data.text}</div>
+        <div
+          className={`grow overflow-hidden rounded-b-md bg-white p-[6px] ${
+            data.text === "" && "font-light text-gray-700"
+          }`}
+        >
+          {data.text !== "" ? data.text : "sample text"}
+        </div>
       </div>
-      <Handle type="source" position={Position.Right} id="a" />
+      <Handle type="source" position={Position.Right} id="source" />
     </>
   );
 };

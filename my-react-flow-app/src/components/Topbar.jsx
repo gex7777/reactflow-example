@@ -4,12 +4,15 @@ export const Topbar = ({ nodes, edges }) => {
   const [ShowError, setShowError] = useState(false);
   const handleClick = () => {
     const numberOfNodes = nodes.length;
-    const numberOfEdges = edges.length;
-    if (numberOfEdges + 1 !== numberOfNodes) {
-      setShowError(true);
-    } else {
+
+    const targets = edges.map((e) => e.target);
+    const uniqueTargetsSize = new Set(targets).size;
+
+    if (numberOfNodes === uniqueTargetsSize + 1) {
       setShowError(false);
       alert("Saved!");
+    } else {
+      setShowError(true);
     }
   };
   return (
