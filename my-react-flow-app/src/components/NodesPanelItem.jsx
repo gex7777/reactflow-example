@@ -11,7 +11,7 @@ const NodesPanelItem = ({ type }) => {
     case "message":
       return <PanelItemMessage onDragStart={onDragStart} />;
       break;
-
+    //add more panelItemtypes cases
     default:
       return <div>not defined</div>;
       break;
@@ -34,3 +34,5 @@ const PanelItemMessage = ({ onDragStart }) => {
     </div>
   );
 };
+
+//define more PanelItemTypes here

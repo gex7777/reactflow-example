@@ -10,7 +10,7 @@ import "reactflow/dist/style.css";
 import { Sidebar } from "./components/Sidebar";
 import { MessageNode } from "./components/MessageNode";
 import { Topbar } from "./components/Topbar";
-
+//create unique id
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
@@ -23,10 +23,13 @@ function App() {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   //memo Nodes
   const nodeTypes = useMemo(() => ({ message: MessageNode }), []);
+  //check if connection is valid
   const isValidConnection = (connection) => {
-    const isConnected = edges.some((n) => n.source === connection.source);
+    //Can only have one edge originating from a source handle
 
-    return !isConnected;
+    const edgeAlreadyExists = edges.some((n) => n.source === connection.source);
+
+    return !edgeAlreadyExists;
   };
   const onConnect = useCallback((params) => {
     setEdges((eds) => addEdge(params, eds));

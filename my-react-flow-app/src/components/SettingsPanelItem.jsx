@@ -5,12 +5,14 @@ const SettingsPanelItem = ({ setNodes, id, type, data }) => {
     case "message":
       return <MessageSettings setNodes={setNodes} id={id} data={data} />;
       break;
-
+    //add cases for rendering setting types
     default:
       return <div>not defined</div>;
       break;
   }
 };
+
+//define panel setting types
 
 const MessageSettings = ({ setNodes, id, data }) => {
   const handleTextChange = (e) => {

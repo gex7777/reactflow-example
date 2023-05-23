@@ -4,10 +4,10 @@ export const Topbar = ({ nodes, edges }) => {
   const [ShowError, setShowError] = useState(false);
   const handleClick = () => {
     const numberOfNodes = nodes.length;
-
+    //get all target handles
     const targets = edges.map((e) => e.target);
     const uniqueTargetsSize = new Set(targets).size;
-
+    // Save button press will show an error if there are more than one Nodes and more than one Nodes have empty target handles
     if (numberOfNodes === uniqueTargetsSize + 1) {
       setShowError(false);
       alert("Saved!");
