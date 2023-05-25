@@ -13,6 +13,7 @@ export const Topbar = ({ nodes, edges }) => {
       alert("Saved!");
     } else {
       setShowError(true);
+      setTimeout(() => setShowError(false), 1000);
     }
   };
   return (
